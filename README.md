@@ -1,3 +1,12 @@
+This is a forked version from zzuxzt/yolact_cpu
+The main problem is: You cannot run on CPU if you have a CUDA on your computer, the following code in <eval.py> will force a CUDA to be used if it exists,
+   net = CustomDataParallel(net)
+   transform = torch.nn.DataParallel(FastBaseTransform()) 
+So I commented out these 2 and change them to 
+   net = net.cpu()
+   transform = FastBaseTransform() #bymc
+Now You can run it on CPU.
+
 # Personal Statement:
 Forking the cpu version from https://github.com/jerpint/yolact.git , and adding the test dataset (PennFudanPed:https://www.cis.upenn.edu/~jshi/ped_html/). For personal use only.
 # Installation for CPU:
