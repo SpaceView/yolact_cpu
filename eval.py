@@ -625,8 +625,8 @@ def evalvideo(net:Yolact, path:str):
     
     # net = CustomDataParallel(net).cuda()
     # transform = torch.nn.DataParallel(FastBaseTransform()).cuda()
-    net = CustomDataParallel(net)
-    transform = torch.nn.DataParallel(FastBaseTransform())
+    net = net.cpu()                 # net = CustomDataParallel(net)
+    transform = FastBaseTransform() #transform = torch.nn.DataParallel(FastBaseTransform())
     frame_times = MovingAverage(100)
     fps = 0
     # The 0.8 is to account for the overhead of time.sleep
